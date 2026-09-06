@@ -6,15 +6,12 @@
     "orientation": "portrait",
     "scheme": "climapp",
     "userInterfaceStyle": "automatic",
-
     "android": {
       "predictiveBackGestureEnabled": false
     },
-
     "web": {
       "output": "static"
     },
-
     "plugins": [
       "expo-router",
       [
@@ -22,9 +19,9 @@
         {
           "backgroundColor": "#208AEF"
         }
-      ]
+      ],
+      "expo-font"
     ],
-
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true

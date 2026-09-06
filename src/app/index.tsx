@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 25,
+    fontFamily: 'Montserrat_400Regular',
   },
   button: {
     backgroundColor: '#7693FF',
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginRight: 10,
     gap: 10,
+    fontFamily: 'Montserrat_600SemiBold',
   },
   icon: {
     width: 20,
