@@ -1,5 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text, View } from 'react-native';
+import citiesData from '../../data/cities.json';
+import CardCities from '../../components/card_cities/cardCities';
 
 const cities = () => {
   return (
@@ -8,8 +10,10 @@ const cities = () => {
       colors={['#00457D', '#05051F']}
       style={styles.container}
     >
-      <View>
-        <Text>cities</Text>
+      <View style={styles.innerContainer}>
+        {citiesData.map((city) => (
+          <CardCities city={city.city_name} cityTemp={city.temp} />
+        ))}
       </View>
     </LinearGradient>
   );
@@ -22,5 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  innerContainer: {
+    gap: 16,
+    paddingHorizontal: 16,
   },
 });
