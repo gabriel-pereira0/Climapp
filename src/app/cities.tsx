@@ -1,7 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import citiesData from '../../data/cities.json';
 import CardCities from '../../components/card_cities/cardCities';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const cities = () => {
   return (
@@ -10,11 +11,17 @@ const cities = () => {
       colors={['#00457D', '#05051F']}
       style={styles.container}
     >
-      <View style={styles.innerContainer}>
-        {citiesData.map((city) => (
-          <CardCities city={city.city_name} cityTemp={city.temp} />
-        ))}
-      </View>
+      <SafeAreaView>
+        <ScrollView contentContainerStyle={styles.innerContainer}>
+          {citiesData.map((city) => (
+            <CardCities
+              city={city.city}
+              cityTemp={city.temp}
+              image={require('../../assets/Imagens/Clouds.png')}
+            />
+          ))}
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -30,5 +37,6 @@ const styles = StyleSheet.create({
   innerContainer: {
     gap: 16,
     paddingHorizontal: 16,
+    paddingTop: 10,
   },
 });

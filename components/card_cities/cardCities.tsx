@@ -1,8 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
-const CardCities = ({ city, cityTemp }: { city: string; cityTemp: number }) => {
+const CardCities = ({
+  city,
+  cityTemp,
+  image,
+}: {
+  city: string;
+  cityTemp: number;
+  image: any;
+}) => {
   return (
     <View style={styles.container}>
+      <Image source={image} style={styles.cityImage} />
+
       <Text style={styles.textCity}>{city}</Text>
       <Text style={styles.textTemp}>{cityTemp}°</Text>
     </View>
@@ -31,5 +41,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     fontFamily: 'Montserrat_700Bold',
+  },
+  cityImage: {
+    width: 27,
+    height: 24,
   },
 });
