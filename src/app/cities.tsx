@@ -15,9 +15,10 @@ const cities = () => {
         <ScrollView contentContainerStyle={styles.innerContainer}>
           {citiesData.map((city) => (
             <CardCities
-              city={city.city}
+              city={city.city.replace(',', ' -')}
               cityTemp={city.temp}
               image={require('../../assets/Imagens/Clouds.png')}
+              key={city.city}
             />
           ))}
         </ScrollView>
