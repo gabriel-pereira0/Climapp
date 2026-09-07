@@ -1,21 +1,23 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, Image, Pressable } from 'react-native';
 
 const CardCities = ({
   city,
   cityTemp,
   image,
+  handlePress,
 }: {
   city: string;
   cityTemp: number;
   image: any;
+  handlePress: () => void;
 }) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <Image source={image} style={styles.cityImage} />
 
       <Text style={styles.textCity}>{city}</Text>
       <Text style={styles.textTemp}>{cityTemp}°</Text>
-    </View>
+    </Pressable>
   );
 };
 

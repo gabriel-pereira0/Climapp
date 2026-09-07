@@ -5,6 +5,7 @@ import CardCities from '../../components/card_cities/cardCities';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useEffect, useState } from 'react';
+import { router } from 'expo-router';
 
 const normalizeText = (text: string) => {
   return text
@@ -48,6 +49,9 @@ const cities = () => {
               cityTemp={city.temp}
               image={require('../../assets/Imagens/Clouds.png')}
               key={city.city}
+              handlePress={() => {
+                router.push(`/${city.city}`);
+              }}
             />
           ))}
         </ScrollView>
