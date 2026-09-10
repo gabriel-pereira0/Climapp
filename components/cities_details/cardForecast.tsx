@@ -26,7 +26,7 @@ const CardForecast = ({
         style={styles.weatherImage}
       />
       <Text style={styles.textMinMax}>
-        {min}/{max}
+        {min}/{max}°
       </Text>
     </View>
   );
