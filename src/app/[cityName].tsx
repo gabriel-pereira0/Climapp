@@ -1,11 +1,19 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router/build/hooks';
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CardDetails from '../../components/cities_details/cardDetails';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
+import CardForecast from '../../components/cities_details/cardForecast';
 
 const CityDetails = () => {
   const { cityName } = useLocalSearchParams();
@@ -28,6 +36,8 @@ const CityDetails = () => {
   useEffect(() => {
     handleData();
   }, []);
+
+  const cardWidth = (Dimensions.get('window').width - 40 - 24) / 3;
 
   return (
     <LinearGradient
@@ -52,6 +62,24 @@ const CityDetails = () => {
               minTemp={cityDetails?.forecast[0]?.min}
               maxTemp={cityDetails?.forecast[0]?.max}
             />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.scrollForecast}
+            >
+              {cityDetails?.forecast
+                .slice(1)
+                .map((item: any, index: number) => (
+                  <CardForecast
+                    key={item.date}
+                    day={index === 0 ? 'Amanhã' : item.weekday}
+                    date={item.date}
+                    min={item.min}
+                    max={item.max}
+                    cardWidth={cardWidth}
+                  />
+                ))}
+            </ScrollView>
           </View>
         </View>
       </SafeAreaView>
@@ -88,6 +116,10 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 40,
+  },
+  scrollForecast: {
+    gap: 14,
   },
 });
 
