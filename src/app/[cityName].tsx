@@ -39,6 +39,16 @@ const CityDetails = () => {
 
   const cardWidth = (Dimensions.get('window').width - 40 - 24) / 3;
 
+  const weekdays: { [key: string]: string } = {
+    Seg: 'Segunda-feira',
+    Ter: 'Terça-feira',
+    Qua: 'Quarta-feira',
+    Qui: 'Quinta-feira',
+    Sex: 'Sexta-feira',
+    Sáb: 'Sábado',
+    Dom: 'Domingo',
+  };
+
   return (
     <LinearGradient
       // Background Linear Gradient
@@ -72,7 +82,7 @@ const CityDetails = () => {
                 .map((item: any, index: number) => (
                   <CardForecast
                     key={item.date}
-                    day={index === 0 ? 'Amanhã' : item.weekday}
+                    day={index === 0 ? 'Amanhã' : weekdays[item.weekday]}
                     date={item.date}
                     min={item.min}
                     max={item.max}
